@@ -1,4 +1,3 @@
-
 name: Build Android APK
 
 on:
@@ -30,10 +29,13 @@ jobs:
         fi
         chmod +x gradlew
 
-    - name: Build Debug APK With Environment Variables
-      env:
-        KEYSTORE_PATH: "dummy_path.jks"
-        STORE_PASSWORD: "dummy_password"
+    - name: Bypass Signing Configurations
+      run: |
+        # build.gradle.kts থেকে সাইনিং কনফিগারেশন ব্লকটি সাময়িকভাবে ডিজেবল করার ট্রিক
+        sed -i '/signingConfigs {/,/^    }/d' app/build.gradle.kts
+        sed -i '/signingConfig = signingConfigs/d' app/build.gradle.kts
+
+    - name: Build Debug APK
       run: ./gradlew assembleDebug --no-daemon
 
     - name: Upload APK Artifact
