@@ -1,0 +1,6 @@
+{
+  "name": "Gemini Assistant",
+  "description": "A beautiful, premium mobile AI assistant powered by Gemini-3.5-flash with Room database thread recovery, customized templates, and persona filters.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
