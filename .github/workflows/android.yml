@@ -30,8 +30,8 @@ jobs:
         fi
         chmod +x gradlew
 
-    - name: Build Debug APK
-      run: ./gradlew assembleDebug
+    - name: Build Debug APK Without Signing Key
+      run: ./gradlew assembleDebug -PsigningConfig=debug
 
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
